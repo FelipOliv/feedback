@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "Felipe Oliveira",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.7.2",
+    "express": "^4.17.1",
+    "google-spreadsheet": "^2.0.8"
+  }
 }

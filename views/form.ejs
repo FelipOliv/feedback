@@ -1,0 +1,120 @@
+<form method="POST">
+    <label for="name">Nome</label>
+    <input type="text" name="name" id="name" placeholder="digite seu nome" />
+
+    <br />
+    <br />
+
+    <label for="phone">Telefone</label>
+    <input type="text" name="phone" id="phone" placeholder="telefone para contato" />
+
+    <br />
+    <br />
+
+    <label for="email">E-mail</label>
+    <input type="email" name="email" id="email" placeholder="digite seu e-mail" />
+
+    <br />
+    <br />
+
+    <label for="visitType">Tipo da visita</label>
+    <select name="visitType" id="visitType">
+        <option value="Sozinho" selected>Sozinho</option>
+        <option value="Com amigos">Com amigos</option>
+        <option value="Em família">Em família</option>
+    </select>
+
+
+    <br />
+    <br />
+
+    <label for="visitFrequence">Sua frequência de visitas</label>
+    <select name="visitFrequence" id="visitFrequence">
+        <option value="Primeira vez" selected>É minha primeira vez</option>
+        <option value="Poucas vezes">Poucas vezes</option>
+        <option value="Algumas vezes">Algumas vezes</option>
+        <option value="Muitas Vezes">Muitas vezes</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label for="environmentOpn">Opnião sobre o ambiente</label>
+    <select name="environmentOpn" id="environmentOpn">
+        <option value="Ruim" selected>Ruim</option>
+        <option value="Bom">Agradável</option>
+        <option value="Excelênte">Excelênte</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label for="serviceOpn">Opnião sobre o atendimento</label>
+    <select name="serviceOpn" id="serviceOpn">
+        <option value="Ruim" selected>Ruim</option>
+        <option value="Bom">Bom</option>
+        <option value="Excelênte">Excelênte</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label for="foodOpn" className="m-0">Opnião sobre a comida</label>
+    <select name="foodOpn" id="foodOpn">
+        <option value="Ruim" selected>Ruim</option>
+        <option value="Bom">Boa</option>
+        <option value="Excelênte">Excelênte</option>
+    </select>
+
+
+    <br />
+    <br />
+
+    <label for="recomendation">Você recomendaria o local?</label>
+    <select name="recomendation" id="recomendation">
+        <option value="Sim" selected>Sim</option>
+        <option value="Não">Não</option>
+    </select>
+
+
+    <br />
+    <br />
+
+    <label for="message">
+        Se quiser, pode deixar uma menssagem para que possamos entender 
+        com suas própias palavras o seu nível de satisfação conos-co.
+    </label>
+    <br/>
+    <textarea name="message" id="message"></textarea>
+
+    <!-- hide -->
+
+    <input type="hidden" name="hour" class="hour">
+    <input type="hidden" name="date" class="date">
+
+    <!-- / hide -->
+
+    <br />
+    <br />
+
+    <button type="submit" name="submit">Finalizar</button>
+</form>
+
+<script>
+
+    const getElement = selector => document.querySelector (selector)
+
+    document.onreadystatechange = event => {
+
+        const locale = "pt-BR"
+
+        if ( event.target.readyState === "complete" )
+        {
+            const date = new Date
+
+            getElement (".date").value = date.toLocaleDateString (locale)
+            getElement (".hour").value = date.toLocaleTimeString (locale)
+        }
+    }
+
+</script>
