@@ -15,7 +15,7 @@ spreadsheet.useServiceAccountAuth (credentials, error => {
 
         spreadsheet.getInfo ( (error, info) => {
 
-            const workSheet = info.worksheets [ 0 ]
+            const workSheet = info.worksheets [ indexWorkSheet ]
 
             workSheet.addRow ({
 

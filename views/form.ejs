@@ -1,120 +1,117 @@
-<form method="POST">
-    <label for="name">Nome</label>
-    <input type="text" name="name" id="name" placeholder="digite seu nome" />
+<%- include components/html/open.ejs %>
 
-    <br />
-    <br />
+    <main id="app">
+        <div class="form-container">
+            <div class="form-image">
+                <img src="/img/burger-3.png" alt="LocalName">
+            </div>
+            <!-- <div class="form-banner">banner image</div> -->
+            <form method="POST">
 
-    <label for="phone">Telefone</label>
-    <input type="text" name="phone" id="phone" placeholder="telefone para contato" />
+                <!-- step 1 --> <div class="step step_1">
+                    <div class="fields-group">
+                        <label for="name">Nome</label>
+                        <input type="text" name="name" id="name" placeholder="Fulano alguma coisa" required minlength="3" />
+                    </div>
 
-    <br />
-    <br />
+                    <div class="fields-group">
+                        <label for="phone">Telefone</label>
+                        <input type="text" name="phone" id="phone" placeholder="(00) 0 000-000" required minlength="10" />
+                    </div>
 
-    <label for="email">E-mail</label>
-    <input type="email" name="email" id="email" placeholder="digite seu e-mail" />
+                    <div class="fields-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" placeholder="fulano@email.com" required />
+                    </div>
 
-    <br />
-    <br />
+                    <div class="fields-group">
+                        <label for="visitType">Como visitou</label>
+                        <select name="visitType" id="visitType" required>
+                            <option value="Sozinho" selected>Sozinho</option>
+                            <option value="Casal">Casal</option>
+                            <option value="Com amigos">Com amigos</option>
+                            <option value="Em família">Em família</option>
+                        </select>
+                    </div>
 
-    <label for="visitType">Tipo da visita</label>
-    <select name="visitType" id="visitType">
-        <option value="Sozinho" selected>Sozinho</option>
-        <option value="Com amigos">Com amigos</option>
-        <option value="Em família">Em família</option>
-    </select>
+                    <div class="fields-group">
+                        <label for="visitFrequence">Frequência de visitas</label>
+                        <select name="visitFrequence" id="visitFrequence" required>
+                            <option value="Primeira vez" selected>É minha primeira vez</option>
+                            <option value="Poucas vezes">Poucas vezes</option>
+                            <option value="Algumas vezes">Algumas vezes</option>
+                            <option value="Muitas Vezes">Muitas vezes</option>
+                        </select>
+                    </div>
+                    <footer>
+                        <button type="button" class="button-toggle-step btn-app" data-steph=".step_1" data-steps=".step_2">próximo</button>
+                    </footer>
+                </div>
 
+                <!-- step 2 --> <div class="step step_2 step-hidden">
 
-    <br />
-    <br />
+                    <div class="fields-group">
+                        <label for="environmentOpn">O que achou do ambiente?</label>
+                        <select name="environmentOpn" id="environmentOpn" required>
+                            <option value="Ruim" selected>Ruim</option>
+                            <option value="Bom">Agradável</option>
+                            <option value="Excelênte">Excelênte</option>
+                        </select>
+                    </div>
 
-    <label for="visitFrequence">Sua frequência de visitas</label>
-    <select name="visitFrequence" id="visitFrequence">
-        <option value="Primeira vez" selected>É minha primeira vez</option>
-        <option value="Poucas vezes">Poucas vezes</option>
-        <option value="Algumas vezes">Algumas vezes</option>
-        <option value="Muitas Vezes">Muitas vezes</option>
-    </select>
+                    <div class="fields-group">
+                        <label for="serviceOpn">O que achou do atendimento?</label>
+                        <select name="serviceOpn" id="serviceOpn" required>
+                            <option value="Ruim" selected>Ruim</option>
+                            <option value="Bom">Bom</option>
+                            <option value="Excelênte">Excelênte</option>
+                        </select>
+                    </div>
 
-    <br />
-    <br />
+                    <div class="fields-group">
+                        <label for="foodOpn" className="m-0">O que achou da comida?</label>
+                        <select name="foodOpn" id="foodOpn" required>
+                            <option value="Ruim" selected>Ruim</option>
+                            <option value="Bom">Boa</option>
+                            <option value="Excelênte">Excelênte</option>
+                        </select>
+                    </div>
 
-    <label for="environmentOpn">Opnião sobre o ambiente</label>
-    <select name="environmentOpn" id="environmentOpn">
-        <option value="Ruim" selected>Ruim</option>
-        <option value="Bom">Agradável</option>
-        <option value="Excelênte">Excelênte</option>
-    </select>
+                    <div class="fields-group">
+                        <label for="recomendation">Você recomendaria esse local?</label>
+                        <select name="recomendation" id="recomendation" required>
+                            <option value="Sim" selected>Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </div>
 
-    <br />
-    <br />
+                    <footer>
+                        <button type="button" class="button-toggle-step btn-app" data-steph=".step_2" data-steps=".step_3">próximo</button>
+                        <button type="button" class="button-toggle-step btn-app-outline" data-steph=".step_2" data-steps=".step_1">voltar</button>
+                    </footer>
+                </div>
 
-    <label for="serviceOpn">Opnião sobre o atendimento</label>
-    <select name="serviceOpn" id="serviceOpn">
-        <option value="Ruim" selected>Ruim</option>
-        <option value="Bom">Bom</option>
-        <option value="Excelênte">Excelênte</option>
-    </select>
+                <!-- step 3 --> <div class="step step_3 step-hidden">
 
-    <br />
-    <br />
+                    <div class="fields-group">
+                        <label for="message">
+                            Deixe uma menssagem para que possamos entender 
+                            com suas própias palavras o seu nível de satisfação (opcional)
+                        </label>
+                        <textarea name="message" id="message"></textarea>
+                    </div>
 
-    <label for="foodOpn" className="m-0">Opnião sobre a comida</label>
-    <select name="foodOpn" id="foodOpn">
-        <option value="Ruim" selected>Ruim</option>
-        <option value="Bom">Boa</option>
-        <option value="Excelênte">Excelênte</option>
-    </select>
+                    <input type="hidden" name="hour" class="hour">
+                    <input type="hidden" name="date" class="date">
 
+                    <footer>
+                        <button type="submit" class="btn-app">finalizar</button>
+                        <button type="button" class="button-toggle-step btn-app-outline" data-steph=".step_3" data-steps=".step_2">voltar</button>
+                    </footer>
+                </div>
 
-    <br />
-    <br />
+            </form>
+        </div>
+    </main>
 
-    <label for="recomendation">Você recomendaria o local?</label>
-    <select name="recomendation" id="recomendation">
-        <option value="Sim" selected>Sim</option>
-        <option value="Não">Não</option>
-    </select>
-
-
-    <br />
-    <br />
-
-    <label for="message">
-        Se quiser, pode deixar uma menssagem para que possamos entender 
-        com suas própias palavras o seu nível de satisfação conos-co.
-    </label>
-    <br/>
-    <textarea name="message" id="message"></textarea>
-
-    <!-- hide -->
-
-    <input type="hidden" name="hour" class="hour">
-    <input type="hidden" name="date" class="date">
-
-    <!-- / hide -->
-
-    <br />
-    <br />
-
-    <button type="submit" name="submit">Finalizar</button>
-</form>
-
-<script>
-
-    const getElement = selector => document.querySelector (selector)
-
-    document.onreadystatechange = event => {
-
-        const locale = "pt-BR"
-
-        if ( event.target.readyState === "complete" )
-        {
-            const date = new Date
-
-            getElement (".date").value = date.toLocaleDateString (locale)
-            getElement (".hour").value = date.toLocaleTimeString (locale)
-        }
-    }
-
-</script>
+<%- include components/html/close.ejs %>

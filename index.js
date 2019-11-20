@@ -1,13 +1,13 @@
 const express = require ("express")
 const path = require ("path") // já está no core do node, ou seja, não precisa do npm install
-const googleSS = require ("google-spreadsheet")
+const GoogleSS = require ("google-spreadsheet")
 const credentials = require ("./key.json")
 
 const app = express()
 
 // ~ configs ~ //
 
-const spreadSheet_ID = "..."
+const spreadSheet_ID = ""
 const spreadSheet_Index = 0
 
 // configurando o ejs como template engine //
@@ -15,6 +15,7 @@ app.set ("view engine", "ejs")
 
 // especificando onde estão as views do app (onde o express deve buscar as views) //
 app.set ("views", path.resolve (__dirname, "views")) // path.resolve ? -> no windows usa-se o \ (contra-barra) para expecificar caminhos, no linux usa-se / (barra), então o path.resolve vai cuidar disso
+app.use (express.static("public")) // configuração para arquivos estaticos
 
 // parseando as requisições POST para Objetos JSON
 app.use (express.json())
@@ -26,7 +27,7 @@ app.get ("/", (request, response) => response.render ("form"))
 
 app.post ("/", (request, response) => {
 
-    const spreadsheet = new googleSS ( spreadSheet_ID )
+    const spreadsheet = new GoogleSS ( spreadSheet_ID )
 
     spreadsheet.useServiceAccountAuth (credentials, error => {
 
@@ -36,26 +37,56 @@ app.post ("/", (request, response) => {
         }
         else
         {
-            const { } = request.body
-
             console.log ("Planilha sicronizada...")
+
+            const {
+
+                name,
+                phone,
+                email,
+                visitType,
+                visitFrequence,
+                environmentOpn,
+                serviceOpn,
+                foodOpn,
+                recomendation,
+                message,
+                date,
+                hour
+                
+            } = request.body
 
             spreadsheet.getInfo ( (error, info) => {
 
                 const workSheet = info.worksheets [ spreadSheet_Index ]
 
-                workSheet.addRow ({ }, error => {
+                workSheet.addRow ({
+
+                    Nome: name,
+                    Telefone: phone,
+                    Email: email,
+                    Visitou: visitType,
+                    Visitas: visitFrequence,
+                    Ambiente: environmentOpn,
+                    Atendimento: serviceOpn,
+                    Comida: foodOpn,
+                    Recomenda: recomendation,
+                    Mensagem: message,
+                    Data: date,
+                    Hora: hour
+
+                }, error => {
 
                     if ( ! error )
                     {
                         console.log ("Dados cadastrados na planilha.")
 
-                        response.send ("Obrigado pelo feedback :)")
+                        res.render ("thanks")
                     }
                 })
-            })
+            } )
         }
-    })
+    } )
 })
 
 // ~ server ~ //
